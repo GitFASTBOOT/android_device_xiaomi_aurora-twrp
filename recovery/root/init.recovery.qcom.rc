@@ -35,6 +35,7 @@ on early-init
     insmod /vendor/lib/modules/goodix_fod.ko
     insmod /vendor/lib/modules/xiaomi_touch.ko
     insmod /vendor/lib/modules/synaptics_tcm2.ko
+    insmod /vendor/lib/modules/qti_battery_charger.ko
     
 on init
     write /sys/class/backlight/panel0-backlight/brightness 200
@@ -57,4 +58,7 @@ on fs
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
     wait /sys/class/power_supply/battery
+    
+on boot
+    start health-hal-2-1
 # END Recovery_StabilityEnhance
